@@ -1,20 +1,14 @@
-#
-# Copyright (C) 2021 Unkown property
-#
-
-# Fetch Ubuntu Latest
-FROM gitpod/workspace-full:latest
-
-# Root
+FROM starlight2834/ci_docker:latest
 USER root
-
-# Start
-RUN echo Welcome to Workspace Zone
-
-# Dependency
-RUN apt update && apt upgrade -y
-RUN sudo apt install openssh-server screen python git openjdk-8-jdk android-tools-adb bc bison \
-build-essential curl flex g++-multilib gcc-multilib gnupg gperf imagemagick lib32ncurses-dev \
-lib32readline-dev lib32z1-dev  liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev \
-libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc yasm zip zlib1g-dev \
-libtinfo5 libncurses5 neofetch -y
+# Install few essential stuffs for gitpod
+RUN apt-get update -y \
+ && apt-get upgrade -y \
+ && apt-get install --no-install-recommends -y clangd-9 tmate rclone nano sudo
+# Cleanup a bit the env
+RUN apt-get clean \
+    && rm -rf /var/cache/apt/* /var/lib/apt/lists/* /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /tmp/*
+# Sudo hax "read README.md for info"
+RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod \
+    && sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers \
+    && chmod 0440 /etc/sudoers
+USER root
