@@ -1,11 +1,5 @@
-# gitpod-workspace
+# workspace
 
-# A simple Gitpod.io workspace
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/cbendot/workspace) 
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/cbendot/gitpod-workspace)
-
-## Some Info
-
-> This template have also the possibility to ssh into the workspace thanks to https://tmate.io, check their website for further information
-
-> Simply you CAN'T build roms over it "unless you are pretty lucky enough and the build doesn't get killed"
+**Working on your first Pull Request?** You can learn how from this *free* series [How to Contribute to an Open Source Project on GitHub](https://kcd.im/pull-request) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/e2163b55c0e04a3a8da0ad7e8eab50c1)](https://www.codacy.com/gh/cbendot/workspace/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cbendot/workspace&amp;utm_campaign=Badge_Grade)
