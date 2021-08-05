@@ -1,11 +1,10 @@
 FROM starlight2834/ci_docker:latest
 USER root
 # Install few essential stuffs for gitpod
-RUN apt-get update -qq && \
-    apt-get upgrade -y && \
-    apt-get install --no-install-recommends -y clangd-9 tmate rclone nano sudo
+RUN apt update && apt upgrade -y
+RUN apt install --no-install-recommends -y clangd-9 tmate rclone nano sudo
 # Cleanup a bit the env
-RUN apt-get clean && \
+RUN apt clean && \
     rm -rf /var/cache/apt/* /var/lib/apt/lists/* /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /tmp/*
 # Sudo hax "read README.md for info"
 RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod \
