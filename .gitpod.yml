@@ -4,3 +4,35 @@
 
 image:
   file: .gitpod.dockerfile
+github:
+  prebuilds:
+    # enable for the main/default branch (defaults to true)
+    main: true
+    # enable for all branches in this repo (defaults to false)
+    branches: true
+    # enable for pull requests coming from this repo (defaults to true)
+    pullRequests: true
+    # enable for pull requests coming from forks (defaults to false)
+    pullRequestsFromForks: true
+    # add a "Review in Gitpod" button as a comment to pull requests (defaults to true)
+    addComment: true
+    # add a "Review in Gitpod" button to pull requests (defaults to false)
+    addBadge: false
+    # add a label once the prebuild is ready to pull requests (defaults to false)
+    addLabel: prebuilt-in-gitpod
+tasks:
+    - before: >
+          mkdir -p ~/.ssh &&
+          [[ ! -z $SSH_PUBLIC_KEY  ]] &&
+          echo $SSH_PUBLIC_KEY > ~/.ssh/id_rsa.pub &&
+          chmod 644 ~/.ssh/id_rsa.pub &&
+          [[ ! -z $SSH_PRIVATE_KEY  ]] &&
+          echo $SSH_PRIVATE_KEY | base64 -d > ~/.ssh/id_rsa &&
+          chmod 600 ~/.ssh/id_rsa && 
+          [[ ! -z $GITCONFIG  ]] &&
+          echo $GITCONFIG | base64 -d > ~/.gitconfig &&
+          chmod 644 ~/.gitconfig &&
+          [[ ! -z $GNUPG  ]] &&
+          cd ~ &&
+          rm -rf .gnupg &&
+          echo $GNUPG | base64 -d | tar --no-same-owner -xzf -                    
